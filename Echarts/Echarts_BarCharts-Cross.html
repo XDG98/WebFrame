@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>Echarts_BarCharts 柱状图</title>
+		<link rel="stylesheet" href="css/main.css" />
+	</head>
+
+	<body>
+		<div class="contentBox">
+			<h1>BarCharts-Cross 柱状图-横</h1>
+			<div class="chartsBox" id="myBarCharts"></div>
+			<a class="back" href="Echarts_Index.html">返回</a>
+		</div>
+	</body>
+
+	<script type="text/javascript" src="jQuery v3.5.0.js"></script>
+	<script type="text/javascript" src="js/echarts.js"></script>
+	<script>
+		// 基于准备好的dom，初始化echarts实例
+		var myBarCharts = echarts.init(document.getElementById('myBarCharts'));
+
+		option = {
+			title: {
+				text: '世界人口总量',
+				subtext: '纯属虚构'
+			},
+			tooltip: {
+				trigger: 'axis',
+				axisPointer: {
+					type: 'shadow'
+				}
+			},
+			legend: {
+				data: ['2011年人数', '2012年人数']
+			},
+			grid: {
+				left: '3%',
+				right: '4%',
+				bottom: '3%',
+				containLabel: true
+			},
+			xAxis: {
+				type: 'value',
+				boundaryGap: [0, 0.01]
+			},
+			yAxis: {
+				type: 'category',
+				data: ['巴西', '印尼', '美国', '印度', '中国', '世界人口(万)']
+			},
+			series: [{
+					name: '2011年人数',
+					type: 'bar',
+					data: [18203, 23489, 29034, 104970, 131744, 630230]
+				},
+				{
+					name: '2012年人数',
+					type: 'bar',
+					data: [19325, 23438, 31000, 121594, 134141, 681807],
+					color: new echarts.graphic.LinearGradient(
+                            0, 0, 1, 1,
+                            [
+                                { offset: 0, color: '#6A6AFF' },  //柱图渐变色
+                                { offset: 1, color: '#00FFFF' },  //柱图渐变色
+                            ]
+                        )
+				}
+			]
+		};
+
+		// 使用刚指定的配置项和数据显示图表。
+		myBarCharts.setOption(option);
+	</script>
+
+</html>

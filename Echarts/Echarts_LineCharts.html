@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>Echarts_LineCharts 折线图</title>
+		<link rel="stylesheet" href="css/main.css" />
+	</head>
+
+	<body>
+		<div class="contentBox">
+			<h1>LineCharts 折线图</h1>
+			<div class="chartsBox" id="myLineCharts"></div>
+			<a class="back" href="Echarts_Index.html">返回</a>
+		</div>
+	</body>
+	
+	<script type="text/javascript" src="js/jQuery v3.5.0.js"></script>
+	<script type="text/javascript" src="js/echarts.js"></script>
+	<script type="text/javascript">
+		// 基于准备好的dom，初始化echarts实例
+        var myLineCharts = echarts.init(document.getElementById('myLineCharts'));
+        
+		option = {
+			title: {
+				text: '保护动物趋势',
+				subtext: '纯属虚构'
+			},
+			tooltip: {
+				trigger: 'axis',
+				axisPointer: {
+					type: 'shadow'
+				}
+			},
+			xAxis: {
+				type: 'category',
+				data: ['2014', '2015', '2016', '2017', '2018', '2019', '2020']
+			},
+			yAxis: {
+				type: 'value'
+			},
+			series: [{
+				name: '保护动物数量',
+				data: [820, 932, 901, 934, 1290, 1330, 1320],
+				type: 'line',
+				symbolSize: 20,
+			}]
+		};
+		
+        // 使用刚指定的配置项和数据显示图表。
+        myLineCharts.setOption(option);
+	</script>
+
+</html>

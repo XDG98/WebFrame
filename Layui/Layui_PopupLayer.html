@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>Layui 弹出层</title>
+		<link rel="stylesheet" href="layui-v2.5.6/css/main.css" />
+		<link rel="stylesheet" href="layui-v2.5.6/css/layui.css" />
+		<link rel="stylesheet" href="layui-v2.5.6/css/modules/layer/default/layer.css" />
+		<style>
+			ul li{
+				list-style: none;
+				padding: 20px 0px;
+			}
+			
+			ul li a{
+				text-decoration: none;
+				font-size: 20px;
+				color: blue;
+			}
+			
+			ul li a:hover{
+				color: skyblue;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="contentBox">
+			<h1>Layui 弹出层</h1>
+			<ul>
+				<li><a class="layer_Popup">弹窗样式1</a></li>
+				<li><a class="layer_Popup">弹窗样式2</a></li>
+				<li><a class="layer_Popup">弹窗样式3</a></li>
+			</ul>
+			<ul>
+				<li><a class="layer_Remind">提醒样式1</a></li>
+				<li><a class="layer_Remind">提醒样式2</a></li>
+				<li><a class="layer_Remind">提醒样式3</a></li>
+			</ul>
+			<a class="back" href="Layui_Index.html">返回</a>
+		</div>
+	</body>
+
+	<script type="text/javascript" src="layui-v2.5.6/js/jQuery v3.5.0.js"></script>
+	<script type="text/javascript" src="layui-v2.5.6/js/layui.all.js"></script>
+
+	<script>
+		layui.use('layer', function() {
+			var layer = layui.layer;
+		});
+
+		$(function() {
+			$(".layer_Popup").each(function(i){
+				$(this).click(function(){
+					switch(i){
+						case 0:
+							layer_Popup0();
+						break;
+						case 1:
+							layer_Popup1();
+						break;
+						case 2:
+							layer_Popup2();
+						break;
+					}
+				})
+			})
+			
+			$(".layer_Remind").each(function(i){
+				$(this).click(function(){
+					switch(i){
+						case 0:
+							layer.msg("提醒样式"+(i+1),{ icon:1, time:1000 });
+						break;
+						case 1:
+							layer.msg("提醒样式"+(i+1),{ icon:2, time:3000 });
+						break;
+						case 2:
+							layer.msg("提醒样式"+(i+1),{ icon:3, time:500 });
+						break;
+					}
+				})
+			})
+		})
+		
+		function layer_Popup0(){
+			layer.confirm('layer_Popup0', {
+				btn: ['按钮一', '按钮二', '按钮三', ], //可以无限个按钮
+				btn3: function(index, layero) {
+					//按钮【按钮三】的回调
+					layer.msg("按钮【按钮三】的回调");
+				}
+			}, function(index, layero) {
+				//按钮【按钮一】的回调
+				layer.msg("按钮【按钮一】的回调");
+			}, function(index) {
+				//按钮【按钮二】的回调
+				layer.msg("按钮【按钮二】的回调");
+			});
+		}
+		
+		function layer_Popup1(){
+			layer.open({
+				content: 'layer_Popup1',
+				btn: ['按钮一', '按钮二'],
+				btnAlign: 'c',//按钮排列
+				anim:"6",//弹出动画
+				yes: function(index, layero) {
+					//按钮【按钮一】的回调
+					layer.msg("按钮【按钮一】的回调");
+				},
+				btn2: function(index, layero) {
+					//按钮【按钮二】的回调
+					//layer.msg("按钮【按钮二】的回调");
+					alert("按钮【按钮二】的回调 return false可禁止点击该按钮关闭");
+					return false; //开启该代码可禁止点击该按钮关闭
+				},
+				cancel: function() {
+					//右上角关闭回调
+					layer.msg("按钮【右上角关闭】的回调");
+					//return false; //开启该代码可禁止点击该按钮关闭
+				}
+			});
+		}
+		
+		function layer_Popup2(){
+			layer.open({
+				content: 'layer_Popup2',
+				btn: ['按钮一', '按钮二'],
+				btnAlign: 'l',//按钮排列
+				anim:"1",//弹出动画
+				yes: function(index, layero) {
+					//按钮【按钮一】的回调
+					layer.msg("按钮【按钮一】的回调");
+				},
+				btn2: function(index, layero) {
+					//按钮【按钮二】的回调
+					layer.msg("按钮【按钮二】的回调");
+					//return false; //开启该代码可禁止点击该按钮关闭
+				},
+				cancel: function() {
+					//右上角关闭回调
+					//layer.msg("按钮【右上角关闭】的回调");
+					//return false; //开启该代码可禁止点击该按钮关闭
+				}
+			});
+		}
+	</script>
+
+</html>

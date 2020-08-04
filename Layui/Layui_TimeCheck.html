@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>Layui 时间选择控件</title>
+		<link rel="stylesheet" href="layui-v2.5.6/css/main.css" />
+		<link rel="stylesheet" href="layui-v2.5.6/css/layui.css" />
+		<link rel="stylesheet" href="layui-v2.5.6/css/modules/laydate/default/laydate.css" />
+	</head>
+
+	<body>
+		<div class="contentBox">
+			<h1>Layui 时间选择控件</h1>
+			<!--年选择器	只提供年列表选择-->
+			<div class="layui-form-item layui-col-md6">
+				<label class="layui-form-label">年</label>
+				<div class="layui-input-block ">
+					<input id="year" class="layui-input" type="text" placeholder="年份" autocomplete="off" />
+				</div>
+			</div>
+
+			<!--年月选择器	只提供年、月选择-->
+			<div class="layui-form-item layui-col-md6">
+				<label class="layui-form-label">年月</label>
+				<div class="layui-input-block">
+					<input id="month" class="layui-input" type="text" placeholder="月份" autocomplete="off" />
+				</div>
+			</div>
+
+			<!--日期选择器	可选择：年、月、日。type默认值，一般可不填-->
+			<div class="layui-form-item layui-col-md6">
+				<label class="layui-form-label">日期</label>
+				<div class="layui-input-block">
+					<input id="date" class="layui-input" type="text" placeholder="日期" autocomplete="off" />
+				</div>
+			</div>
+
+			<!--时间选择器	只提供时、分、秒选择-->
+			<div class="layui-form-item layui-col-md6">
+				<label class="layui-form-label">时间</label>
+				<div class="layui-input-block">
+					<input id="time" class="layui-input" type="text" placeholder="时间" autocomplete="off" />
+				</div>
+			</div>
+
+			<!--日期时间选择器	可选择：年、月、日、时、分、秒-->
+			<div class="layui-form-item layui-col-md6">
+				<label class="layui-form-label">日期时间</label>
+				<div class="layui-input-block">
+					<input id="datetime" class="layui-input" type="text" placeholder="详细日期" autocomplete="off" />
+				</div>
+			</div>
+
+			<!--自定义日期格式	可任意组合-->
+			<div class="layui-form-item layui-col-md6">
+				<label class="layui-form-label">自定义日期</label>
+				<div class="layui-input-block">
+					<input id="format" class="layui-input" type="text" placeholder="日期" autocomplete="off" />
+				</div>
+			</div>
+
+			<a class="back" href="Layui_Index.html">返回</a>
+		</div>
+	</body>
+
+	<script type="text/javascript" src="layui-v2.5.6/js/layui.all.js"></script>
+	<script type="text/javascript" src="layui-v2.5.6/js/lay/modules/laydate.js"></script>
+	<script>
+		layui.use(['laydate'], function() {
+			var laydate = layui.laydate;
+
+			//执行一个laydate实例
+			laydate.render({
+				elem: '#year', //指定元素
+				type: 'year', //选择类型
+				theme: 'default', //主题
+			});
+
+			laydate.render({
+				elem: '#month', //指定元素
+				type: 'month', //选择类型
+				theme: 'molv', //主题
+			});
+
+			laydate.render({
+				elem: '#date', //指定元素
+				type: 'date', //选择类型
+				theme: 'grid', //主题
+			});
+
+			laydate.render({
+				elem: '#time', //指定元素
+				type: 'time', //选择类型
+				theme: '#393D49', //主题
+			});
+
+			laydate.render({
+				elem: '#datetime', //指定元素
+				type: 'datetime', //选择类型
+				theme: '#58D3F7', //主题
+			});
+
+			//自定义日期格式
+			laydate.render({
+				elem: '#format',
+				format: 'yyyy年MM月dd日', //可任意组合
+				theme: '#F7819F', //主题
+			});
+
+		});
+	</script>
+
+</html>

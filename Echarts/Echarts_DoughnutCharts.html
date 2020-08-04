@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>Echarts_DoughnutCharts 油炸圈饼图</title>
+		<link rel="stylesheet" href="css/main.css" />
+	</head>
+
+	<body>
+		<div class="contentBox">
+			<h1>DoughnutCharts 油炸圈饼图</h1>
+			<div class="chartsBox" id="myDoughnutCharts"></div>
+			<a class="back" href="Echarts_Index.html">返回</a>
+		</div>
+	</body>
+
+	<script type="text/javascript" src="jQuery v3.5.0.js"></script>
+	<script type="text/javascript" src="js/echarts.js"></script>
+	<script>
+		// 基于准备好的dom，初始化echarts实例
+		var myDoughnutCharts = echarts.init(document.getElementById('myDoughnutCharts'));
+
+		option = {
+			title: {
+	        	text: '某站点用户访问来源',
+	        	subtext: '纯属虚构',
+	        	left: 'center'
+	    	},
+			tooltip: {
+				trigger: 'item',
+				formatter: '{a} <br/>{b}: {c} ({d}%)'
+			},
+			legend: {
+				orient: 'vertical',
+				left: 10,
+				data: ['直接访问', '邮件营销', '联盟广告', '视频广告', '搜索引擎']
+			},
+			series: [{
+				name: '访问来源',
+				type: 'pie',
+				radius: ['50%', '70%'],
+				avoidLabelOverlap: false,
+				label: {
+					show: false,
+					position: 'center'
+				},
+				emphasis: {
+					label: {
+						show: true,
+						fontSize: '30',
+						fontWeight: 'bold'
+					}
+				},
+				labelLine: {
+					show: false
+				},
+				data: [{
+						value: 335,
+						name: '直接访问'
+					},
+					{
+						value: 310,
+						name: '邮件营销'
+					},
+					{
+						value: 234,
+						name: '联盟广告'
+					},
+					{
+						value: 135,
+						name: '视频广告'
+					},
+					{
+						value: 1548,
+						name: '搜索引擎'
+					}
+				]
+			}]
+		};
+
+		// 使用刚指定的配置项和数据显示图表。
+		myDoughnutCharts.setOption(option);
+	</script>
+
+</html>

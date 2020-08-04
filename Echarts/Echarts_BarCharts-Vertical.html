@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>Echarts_BarCharts 柱状图</title>
+		<link rel="stylesheet" href="css/main.css" />
+	</head>
+
+	<body>
+		<div class="contentBox">
+			<h1>BarCharts-Vertical 柱状图-竖</h1>
+			<div class="chartsBox" id="myBarCharts"></div>
+			<a class="back" href="Echarts_Index.html">返回</a>
+		</div>
+	</body>
+
+	<script type="text/javascript" src="jQuery v3.5.0.js"></script>
+	<script type="text/javascript" src="js/echarts.js"></script>
+	<script>
+		// 基于准备好的dom，初始化echarts实例
+		var myBarCharts = echarts.init(document.getElementById('myBarCharts'));
+		
+		option = {
+			title: {
+				text: '世界人口总量',
+				subtext: '纯属虚构'
+			},
+			color: ['#3398DB'],
+			title: {
+				text: '世界人口总量',
+				subtext: '纯属虚构'
+			},
+			tooltip: {
+				trigger: 'axis',
+				axisPointer: { // 坐标轴指示器，坐标轴触发有效
+					type: 'shadow' // 默认为直线，可选为：'line' | 'shadow'
+				}
+			},
+			grid: {
+				left: '3%',
+				right: '4%',
+				bottom: '3%',
+				containLabel: true
+			},
+			xAxis: [{
+				type: 'category',
+				data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+				axisTick: {
+					alignWithLabel: true
+				}
+			}],
+			yAxis: [{
+				type: 'value'
+			}],
+			series: [{
+				name: '人数',
+				type: 'bar',
+				barWidth: '60%',
+				data: [10, 52, 200, 334, 390, 330, 220]
+			}]
+		};
+
+		// 使用刚指定的配置项和数据显示图表。
+		myBarCharts.setOption(option);
+	</script>
+
+</html>
